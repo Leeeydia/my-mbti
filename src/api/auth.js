@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "https://moneyfulpublicpolicy.co.kr";
+const API_URL =
+  import.meta.env.VITE_AUTH_API_URL || "https://moneyfulpublicpolicy.co.kr";
 
 export const register = async (userData) => {
   const response = await axios.post(`${API_URL}/register`, userData);
@@ -15,7 +16,7 @@ export const login = async (userData) => {
 export const getUserProfile = async (token) => {
   const response = await axios.get(`${API_URL}/user`, {
     headers: {
-      Authorization: `Bearer ${token} `,
+      Authorization: `Bearer ${token}`,
     },
   });
   return response.data;
