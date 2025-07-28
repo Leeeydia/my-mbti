@@ -1,4 +1,3 @@
-import React from "react";
 import {
   deleteTestResult,
   updateTestResultVisibility,
@@ -26,7 +25,13 @@ const mbtiDescriptions = {
 const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
   const isOwner = result.userId === user.id;
 
-  const formattedDate = new Date(result.date).toLocaleString();
+  const formattedDate = new Date(result.date).toLocaleString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   const description =
     mbtiDescriptions[result.result] || "MBTI 유형 설명을 찾을 수 없습니다.";
 
@@ -34,42 +39,59 @@ const TestResultItem = ({ result, user, onUpdate, onDelete }) => {
     try {
       const newVisibility = !result.visibility;
       await updateTestResultVisibility(result.id, newVisibility);
-      onUpdate(); // 부모 컴포넌트에서 결과 목록을 다시 불러오도록 요청
+      onUpdate();
     } catch (error) {
       console.error("Visibility toggle failed:", error);
-      alert("Visibility toggle failed. Please try again.");
+      alert("공개 설정 변경에 실패했습니다. 다시 시도해주세요.");
     }
   };
 
   const handleDelete = async () => {
-    try {
-      await deleteTestResult(result.id);
-      onDelete(); // 부모 컴포넌트에서 결과 목록을 다시 불러오도록 요청
-    } catch (error) {
-      console.error("Delete failed:", error);
-      alert("Delete failed. Please try again.");
+    if (window.confirm("정말로 이 결과를 삭제하시겠습니까?")) {
+      try {
+        await deleteTestResult(result.id);
+        onDelete();
+      } catch (error) {
+        console.error("Delete failed:", error);
+        alert("삭제에 실패했습니다. 다시 시도해주세요.");
+      }
     }
   };
 
   return (
-    <div className="p-6 bg-gray-800 rounded-lg shadow-lg text-white">
-      <div className="flex justify-between items-center border-b border-gray-700 pb-3 mb-3">
-        <h4 className="text-xl font-semibold">{result.nickname}</h4>
-        <p className="text-sm text-gray-400">{formattedDate}</p>
+    <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h4 className="text-xl font-semibold text-gray-900 mb-1">
+            {result.nickname}
+          </h4>
+          <p className="text-sm text-gray-500">{formattedDate}</p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+            {result.result}
+          </span>
+          {!result.visibility && (
+            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+              비공개
+            </span>
+          )}
+        </div>
       </div>
-      <p className="text-2xl font-bold text-yellow-400 mb-4">{result.result}</p>
-      <p className="text-base text-gray-300 mb-4">{description}</p>
+
+      <p className="text-gray-700 mb-4 leading-relaxed">{description}</p>
+
       {isOwner && (
-        <div className="flex justify-end space-x-4">
+        <div className="flex justify-end space-x-3 pt-4 border-t border-gray-100">
           <button
             onClick={handleToggleVisibility}
-            className="bg-blue-500 py-2 px-4 rounded-lg text-sm hover:bg-blue-600 transition"
+            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
           >
             {result.visibility ? "비공개로 전환" : "공개로 전환"}
           </button>
           <button
             onClick={handleDelete}
-            className="bg-red-500 py-2 px-4 rounded-lg text-sm hover:bg-red-600 transition"
+            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
           >
             삭제
           </button>

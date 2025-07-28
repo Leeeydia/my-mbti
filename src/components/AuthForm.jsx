@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const AuthForm = ({ mode, onSubmit, disabled = false }) => {
   const [formData, setFormData] = useState({
@@ -20,9 +20,11 @@ const AuthForm = ({ mode, onSubmit, disabled = false }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
-      <div className="form-group">
-        <label className="form-label">아이디</label>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          아이디
+        </label>
         <input
           type="text"
           name="id"
@@ -31,12 +33,14 @@ const AuthForm = ({ mode, onSubmit, disabled = false }) => {
           placeholder="아이디를 입력하세요"
           required
           disabled={disabled}
-          className="form-input"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors"
         />
       </div>
 
-      <div className="form-group">
-        <label className="form-label">비밀번호</label>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          비밀번호
+        </label>
         <input
           type="password"
           name="password"
@@ -45,13 +49,15 @@ const AuthForm = ({ mode, onSubmit, disabled = false }) => {
           placeholder="비밀번호를 입력하세요"
           required
           disabled={disabled}
-          className="form-input"
+          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors"
         />
       </div>
 
       {mode === "signup" && (
-        <div className="form-group">
-          <label className="form-label">닉네임</label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            닉네임
+          </label>
           <input
             type="text"
             name="nickname"
@@ -60,7 +66,7 @@ const AuthForm = ({ mode, onSubmit, disabled = false }) => {
             placeholder="닉네임을 입력하세요"
             required
             disabled={disabled}
-            className="form-input"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors"
           />
         </div>
       )}
@@ -68,7 +74,11 @@ const AuthForm = ({ mode, onSubmit, disabled = false }) => {
       <button
         type="submit"
         disabled={disabled}
-        className={`form-button form-button-primary ${disabled ? "" : ""}`}
+        className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white transition-colors ${
+          disabled
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        }`}
       >
         {disabled
           ? mode === "login"

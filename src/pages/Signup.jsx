@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AuthForm from "../components/AuthForm";
 import { register } from "../api/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -28,21 +28,39 @@ const Signup = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-header">
-        <h1>회원가입</h1>
-        <p>새 계정을 만들어보세요</p>
-      </div>
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div className="text-center">
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+            회원가입
+          </h2>
+          <p className="mt-2 text-sm text-gray-600">새 계정을 만들어보세요</p>
+        </div>
 
-      <div className="auth-form-wrapper">
-        {error && <div className="error-message">{error}</div>}
+        <div className="bg-white py-8 px-6 shadow-lg rounded-lg border border-gray-200">
+          {error && (
+            <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+              {error}
+            </div>
+          )}
 
-        <AuthForm mode="signup" onSubmit={handleSignup} disabled={isLoading} />
+          <AuthForm
+            mode="signup"
+            onSubmit={handleSignup}
+            disabled={isLoading}
+          />
 
-        <div className="auth-link">
-          <p>
-            이미 계정이 있으신가요? <Link to="/login">로그인하기</Link>
-          </p>
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-600">
+              이미 계정이 있으신가요?{" "}
+              <Link
+                to="/login"
+                className="font-medium text-blue-600 hover:text-blue-500 transition-colors"
+              >
+                로그인하기
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
