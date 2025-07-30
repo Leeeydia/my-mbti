@@ -16,8 +16,8 @@
 
 > 👉 [배포 링크 바로가기](https://leeeydia.github.io/my-mbti/)
 
-![mbti-preview](https://github.com/Leeeydia/my-mbti/assets/your-preview-image.png)  
-_(스크린샷은 직접 캡처 후 이미지 링크 교체해 주세요)_
+<img width="1886" height="852" alt="mbti" src="https://github.com/user-attachments/assets/cd3e04a4-9d7a-4615-85bc-f604f6caf660" />
+
 
 <br />
 
