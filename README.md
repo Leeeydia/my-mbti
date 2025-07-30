@@ -1,109 +1,65 @@
-# 🧠 MBTI 성격 유형 테스트
+# 💡 MBTI 유형 테스트
 
-MBTI(Myers-Briggs Type Indicator) 기반의 성격 유형 테스트를 제공하는 React 웹 애플리케이션입니다.
+나의 성격을 재미있게 알아보는 MBTI 기반 테스트 웹 애플리케이션입니다.
 
-## ✨ 주요 기능
+<div align="center">
+  <img src="https://img.shields.io/badge/React-18-blue?logo=react" />
+  <img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript" />
+  <img src="https://img.shields.io/badge/CSS-Modules-blueviolet?logo=css3" />
+  <img src="https://img.shields.io/badge/Router-React%20Router%20DOM-orange?logo=reactrouter" />
+  <img src="https://img.shields.io/badge/Deploy-GitHub%20Pages-brightgreen?logo=github" />
+</div>
 
-- 🔐 **사용자 인증**: 회원가입/로그인 시스템
-- 📝 **MBTI 테스트**: 20개 질문을 통한 성격 유형 진단
-- 📊 **결과 관리**: 개인별 테스트 결과 저장 및 조회
-- 👤 **프로필 관리**: 사용자 프로필 수정
-- 🔒 **보안**: JWT 토큰 기반 인증
-- 📱 **반응형 디자인**: 모바일/데스크톱 호환
+<br />
 
-## 🛠️ 기술 스택
+## 📸 미리보기
 
-### Frontend
+> 👉 [배포 링크 바로가기](https://leeeydia.github.io/my-mbti/)
 
-- **React 18** - 컴포넌트 기반 UI 라이브러리
-- **React Router** - 클라이언트 사이드 라우팅
-- **Tailwind CSS** - 유틸리티 우선 CSS 프레임워크
-- **Axios** - HTTP 클라이언트
-- **Vite** - 빠른 개발 환경 및 빌드 도구
+![mbti-preview](https://github.com/Leeeydia/my-mbti/assets/your-preview-image.png)  
+_(스크린샷은 직접 캡처 후 이미지 링크 교체해 주세요)_
 
-### Backend & Database
+<br />
 
-- **JSON Server** - 개발용 REST API 서버
-- **JWT** - 토큰 기반 인증
+## 🛠 기술 스택
 
-## 🚀 설치 및 실행
+| 분류        | 기술                                                  |
+|-------------|------------------------------------------------------|
+| **Frontend** | React 18<br>React Router DOM<br>JavaScript<br>CSS Modules |
+| **디자인**     | CSS3<br>미디어 쿼리를 활용한 반응형 웹 구현              |
+| **배포**       | GitHub Pages (`gh-pages` 브랜치로 정적 파일 배포)         |
+| **버전 관리**  | Git / GitHub                                        |
 
-### 사전 요구사항
+<br />
 
-- Node.js (v16 이상)
-- npm 또는 yarn
-
-### 설치
-
-```bash
-# 저장소 클론
-git clone [repository-url]
-cd my-mbti
-
-# 의존성 설치
-npm install
-# 또는
-yarn install
-```
-
-### 개발 환경 실행
+## 📁 폴더 구조
 
 ```bash
-# JSON Server 실행 (포트 5000)
-npm run json-server
+my-mbti/
+├── public/
+├── src/
+│   ├── components/      # 공통 컴포넌트
+│   ├── pages/           # 라우트 페이지들
+│   ├── data/            # 질문/결과 데이터
+│   ├── App.js
+│   └── index.js
+├── .gitignore
+├── package.json
+└── README.md
+<br />
+🚀 주요 기능
+12개의 질문에 대한 선택으로 MBTI 결과 도출
 
-# 새 터미널에서 React 앱 실행 (포트 5173)
-npm run dev
-```
+유형별 결과 페이지 제공
 
-### 빌드
+React Router를 활용한 페이지 전환
 
-```bash
-npm run build
-```
+GitHub Pages를 통한 배포
 
-## 📁 프로젝트 구조
+<br />
+🧠 느낀 점
+컴포넌트 분리와 라우팅 구조에 대한 이해를 높일 수 있었고,
 
-```
-src/
-├── api/              # API 호출 함수들
-├── components/       # 재사용 가능한 컴포넌트
-├── data/            # 정적 데이터 (MBTI 질문)
-├── pages/           # 페이지 컴포넌트
-├── utils/           # 유틸리티 함수 (MBTI 계산)
-└── App.jsx          # 메인 앱 컴포넌트
-```
+CSS Module을 사용해 스타일링 충돌을 방지하는 법을 익혔습니다.
 
-## 🎯 MBTI 유형 계산 로직
-
-4가지 차원에서 성격을 분석합니다:
-
-- **E/I**: 외향성(Extraversion) vs 내향성(Introversion)
-- **S/N**: 감각(Sensing) vs 직관(iNtuition)
-- **T/F**: 사고(Thinking) vs 감정(Feeling)
-- **J/P**: 판단(Judging) vs 인식(Perceiving)
-
-## 📝 주요 학습 포인트
-
-- **React Hooks**: useState, useEffect를 활용한 상태 관리
-- **React Router**: SPA 라우팅 및 보호된 라우트 구현
-- **API 통신**: Axios를 통한 RESTful API 연동
-- **인증 시스템**: JWT 토큰 기반 로그인/회원가입
-- **상태 관리**: Props drilling을 통한 사용자 상태 관리
-- **반응형 UI**: Tailwind CSS를 활용한 모던 UI 구현
-
-## 🔧 개발 과정에서 해결한 문제들
-
-1. **라우팅 보안**: ProtectedRoute 컴포넌트로 인증된 사용자만 접근 가능
-2. **상태 동기화**: 로그인 상태를 여러 컴포넌트 간 공유
-3. **데이터 검증**: 폼 입력값 유효성 검사
-4. **에러 처리**: API 요청 실패 시 사용자 친화적 오류 메시지
-
-## 🎨 UI/UX 특징
-
-- **직관적인 인터페이스**: 단계별 테스트 진행
-- **즉시 피드백**: 실시간 응답 및 결과 표시
-- **모바일 최적화**: 터치 친화적 인터페이스
-- **접근성 고려**: 키보드 네비게이션 지원
-
----
+<br />
