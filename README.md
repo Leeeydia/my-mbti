@@ -14,8 +14,6 @@
 
 ## 📸 미리보기
 
-> 👉 [배포 링크 바로가기](https://leeeydia.github.io/my-mbti/)
-
 <img width="1886" height="852" alt="mbti" src="https://github.com/user-attachments/assets/cd3e04a4-9d7a-4615-85bc-f604f6caf660" />
 
 
